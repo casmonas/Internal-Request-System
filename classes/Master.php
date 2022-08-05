@@ -287,6 +287,22 @@ Class Master extends DBConnection {
 		return json_encode($resp);
 
 	}
+
+	//chika is adding this one
+	function delete_request(){
+		extract($_POST);
+		$del = $this->conn->query("DELETE FROM `po_list` where id = '{$id}'");
+		if($del){
+			$resp['status'] = 'success';
+			$this->settings->set_flashdata('success',"Rent successfully deleted.");
+		}else{
+			$resp['status'] = 'failed';
+			$resp['error'] = $this->conn->error;
+		}
+		return json_encode($resp);
+
+	}
+	//end of chika's addition
 	function delete_img(){
 		extract($_POST);
 		if(is_file($path)){

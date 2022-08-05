@@ -32,39 +32,69 @@
                       </a>
                     </li> 
                     <li class="nav-item dropdown">
-                      <a href="<?php echo base_url ?>admin/?page=suppliers" class="nav-link nav-suppliers">
+                      <a href="<?php echo base_url ?>admin/?page=authorities" class="nav-link nav-suppliers">
                         <i class="nav-icon fas fa-truck-loading"></i>
                         <p>
-                        Supplier List
+                        Authorities
                         </p>
                       </a>
                     </li>
                     <li class="nav-item dropdown">
-                      <a href="<?php echo base_url ?>admin/?page=items" class="nav-link nav-items">
-                        <i class="nav-icon fas fa-boxes"></i>
+                      <a href="<?php echo base_url ?>admin/?page=materials" class="nav-link nav-materials">
+                        <i class="nav-icon fas fa-dolly"></i>
                         <!-- <p>
                           Item List
                         </p> -->
                         <p>
-                          Material List
+                          Materials List
                         </p>
                       </a>
                     </li>
                     <!--im adding from here-->
                     <li class="nav-item dropdown">
                       <a href="<?php echo base_url ?>admin/?page=products" class="nav-link nav-products">      <!--  nav-items causes active link--it uses the page name based on code below-->
-                        <i class="nav-icon fas fa-boxes"></i>
+                        <i class="nav-icon fas fa-store"></i>
                         <p>
                           Products List
                         </p>
                       </a>
                     </li>
                     <!--im stopping from here-->
+                     <!--im adding from here-->
+                     <li class="nav-item dropdown">
+                      <a href="<?php echo base_url ?>admin/?page=internal_request" class="nav-link nav-internal_request">      <!--  nav-items causes active link--it uses the page name based on code below-->
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>
+                          Internal Request
+                        </p>
+                      </a>
+                    </li>
+                    <!--im stopping from here-->
+                     <!--im adding from here-->
+                     <li class="nav-item dropdown">
+                      <a href="<?php echo base_url ?>admin/?page=material_request" class="nav-link nav-material_request">      <!--  nav-items causes active link--it uses the page name based on code below-->
+                        <i class="nav-icon fas fa-warehouse"></i>
+                        <p>
+                          Material Request
+                        </p>
+                      </a>
+                    </li>
+                    <!--im stopping from here-->
+                     <!--im adding from here-->
+                     <li class="nav-item dropdown">
+                      <a href="<?php echo base_url ?>admin/?page=customer_request" class="nav-link nav-customer_request">      <!--  nav-items causes active link--it uses the page name based on code below-->
+                        <i class="nav-icon fas fa-handshake"></i>
+                        <p>
+                        Customer Request
+                        </p>
+                      </a>
+                    </li>
+                    <!--im stopping from here-->
                     <li class="nav-item dropdown">
-                      <a href="<?php echo base_url ?>admin/?page=purchase_orders" class="nav-link nav-purchase_orders">
+                      <a href="<?php echo base_url ?>admin/?page=purchase_requisition" class="nav-link nav-purchase_requisition">
                         <i class="nav-icon fas fa-file-invoice"></i>
                         <p>
-                          Purchase Orders
+                          Purchase Requisition
                         </p>
                       </a>
                     </li>
