@@ -5,7 +5,7 @@
 <?php endif;?>
 <div class="card card-outline card-primary">
 	<div class="card-header">
-		<h3 class="card-title">Customer Requests</h3>
+		<h3 class="card-title">List of Customer Requests</h3>
 		<div class="card-tools">
 			<a href="?page=customer_request/manage_po" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
 		</div>
@@ -90,8 +90,9 @@
 <script>
 	$(document).ready(function(){
 		$('.delete_data').click(function(){
-			_conf("Are you sure to delete this rent permanently?","delete_rent",[$(this).attr('data-id')])
-		})//meaning they werent even the original owners. this was previously or originally done for rentals or reservations.
+			_conf("Are you sure to delete this rent permanently?","delete_request",[$(this).attr('data-id')])
+		})//meaning they werent even the original owners. this was previously or originally done for rentals or reservations. notice delete_request,
+		//it's where the method is called
 		$('.view_details').click(function(){
 			uni_modal("Reservaton Details","customer_request/view_details.php?id="+$(this).attr('data-id'),'mid-large')
 		})

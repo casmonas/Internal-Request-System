@@ -294,7 +294,7 @@ Class Master extends DBConnection {
 		$del = $this->conn->query("DELETE FROM `po_list` where id = '{$id}'");
 		if($del){
 			$resp['status'] = 'success';
-			$this->settings->set_flashdata('success',"Rent successfully deleted.");
+			$this->settings->set_flashdata('success',"Request successfully deleted.");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['error'] = $this->conn->error;
@@ -381,6 +381,9 @@ switch ($action) {
 	break;
 	case 'delete_rent':
 		echo $Master->delete_rent();
+	break;
+	case 'delete_request':
+		echo $Master->delete_request();//worked arround the delete request, added it here and it's working.
 	break;
 	case 'renew_rent':
 		echo $Master->renew_rent();

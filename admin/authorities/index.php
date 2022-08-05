@@ -5,7 +5,7 @@
 <?php endif;?>
 <div class="card card-outline card-primary">
 	<div class="card-header">
-		<h3 class="card-title">List of Suppliers</h3>
+		<h3 class="card-title">List of Authorities</h3>
 		<div class="card-tools">
 			<a href="javascript:void(0)" id="create_new" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
 		</div>
@@ -85,13 +85,13 @@
 			_conf("Are you sure to delete this Supplier permanently?","delete_supplier",[$(this).attr('data-id')])
 		})
 		$('#create_new').click(function(){
-			uni_modal("<i class='fa fa-plus'></i> Register New Supplier","suppliers/manage_supplier.php")
+			uni_modal("<i class='fa fa-plus'></i> Register New Supplier","authorities/manage_supplier.php")
 		})
 		$('.view_data').click(function(){
-			uni_modal("<i class='fa fa-info-circle'></i> Supplier's Details","suppliers/view_details.php?id="+$(this).attr('data-id'),"")
+			uni_modal("<i class='fa fa-info-circle'></i> Supplier's Details","authorities/view_details.php?id="+$(this).attr('data-id'),"")
 		})
 		$('.edit_data').click(function(){
-			uni_modal("<i class='fa fa-edit'></i> Edit Supplier's Details","suppliers/manage_supplier.php?id="+$(this).attr('data-id'))
+			uni_modal("<i class='fa fa-edit'></i> Edit Supplier's Details","authorities/manage_supplier.php?id="+$(this).attr('data-id'))
 		})
 		$('.table th,.table td').addClass('px-1 py-0 align-middle')
 		$('.table').dataTable();

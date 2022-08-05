@@ -35,7 +35,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 </style>
 <div class="card card-outline card-info">
 	<div class="card-header">
-		<h3 class="card-title"><?php echo isset($id) ? "Update Purchase Order Details": "New Purchase Order" ?> </h3>
+		<h3 class="card-title"><?php echo isset($id) ? "Update Customer Request Details": "New Customer Request" ?> </h3>
 	</div>
 	<div class="card-body">
 		<form action="" id="po-form">
@@ -156,7 +156,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 	</div>
 	<div class="card-footer">
 		<button class="btn btn-flat btn-primary" form="po-form">Save</button>
-		<a class="btn btn-flat btn-default" href="?page=purchase_orders">Cancel</a>
+		<a class="btn btn-flat btn-default" href="?page=customer_request">Cancel</a>
 	</div>
 </div>
 <table class="d-none" id="item-clone">
@@ -294,7 +294,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 				},
 				success:function(resp){
 					if(typeof resp =='object' && resp.status == 'success'){
-						location.href = "./?page=purchase_orders/view_po&id="+resp.id;
+						location.href = "./?page=customer_request/view_po&id="+resp.id;
 					}else if((resp.status == 'failed' || resp.status == 'po_failed') && !!resp.msg){
                         var el = $('<div>')
                             el.addClass("alert alert-danger err-msg").text(resp.msg)

@@ -76,6 +76,46 @@
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
+          <!-- chika -->
+              <!-- /.col -->
+              <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-file-invoice"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Approve P.O.</span>
+                <span class="info-box-number">
+                  <?php 
+                     $po_appoved = $conn->query("SELECT * FROM po_list where `status` =1 ")->num_rows;
+                     echo number_format($po_appoved);
+                  ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+              <!-- /.col -->
+              <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-file-invoice"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Approve P.O.</span>
+                <span class="info-box-number">
+                  <?php 
+                     $po_appoved = $conn->query("SELECT * FROM po_list where `status` =1 ")->num_rows;
+                     echo number_format($po_appoved);
+                  ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <!-- chika -->
         </div>
 <div class="container">
   
