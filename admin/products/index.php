@@ -26,7 +26,7 @@
 					<tr class="bg-navy disabled">
 						<th>#</th>
 						<th>Date Created</th>
-						<th>Item Name</th>
+						<th>Product Name</th>
 						<th>Description</th>
 						<th>Status</th>
 						<th>Action</th>
@@ -35,7 +35,7 @@
 				<tbody>
 					<?php 
 					$i = 1;
-					$qry = $conn->query("SELECT * from `item_list` order by (`name`) asc ");
+					$qry = $conn->query("SELECT * from `product_list` order by (`name`) asc ");
 					while($row = $qry->fetch_assoc()):
 						$row['description'] = html_entity_decode($row['description']);
 					?>
@@ -75,24 +75,24 @@
 <script>
 	$(document).ready(function(){
 		$('.delete_data').click(function(){
-			_conf("Are you sure to delete this Item permanently?","delete_item",[$(this).attr('data-id')])
+			_conf("Are you sure to delete this Product permanently?","delete_product",[$(this).attr('data-id')])
 		})
 		$('#create_new').click(function(){
-			uni_modal("<i class='fa fa-plus'></i> Create New Item","items/manage_item.php")
+			uni_modal("<i class='fa fa-plus'></i> Create New Product","products/manage_item.php")
 		})
 		$('.view_data').click(function(){
-			uni_modal("<i class='fa fa-info-circle'></i> Item's Details","items/view_details.php?id="+$(this).attr('data-id'),"")
+			uni_modal("<i class='fa fa-info-circle'></i> Product's Details","products/view_details.php?id="+$(this).attr('data-id'),"")
 		})
 		$('.edit_data').click(function(){
-			uni_modal("<i class='fa fa-edit'></i> Edit Item's Details","items/manage_item.php?id="+$(this).attr('data-id'))
+			uni_modal("<i class='fa fa-edit'></i> Edit Product's Details","products/manage_item.php?id="+$(this).attr('data-id'))
 		})
 		$('.table th,.table td').addClass('px-1 py-0 align-middle')
 		$('.table').dataTable();
 	})
-	function delete_item($id){
+	function delete_product($id){
 		start_loader();
 		$.ajax({
-			url:_base_url_+"classes/Master.php?f=delete_item",
+			url:_base_url_+"classes/Master.php?f=delete_product",
 			method:"POST",
 			data:{id: $id},
 			dataType:"json",

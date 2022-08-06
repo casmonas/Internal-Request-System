@@ -35,7 +35,7 @@ Class Master extends DBConnection {
 			return $this->capture_err();
 		if($check > 0){
 			$resp['status'] = 'failed';
-			$resp['msg'] = "Supplier already exist.";
+			$resp['msg'] = "Authority Contact Person already exist.";
 			return json_encode($resp);
 			exit;
 		}
@@ -49,9 +49,9 @@ Class Master extends DBConnection {
 		if($save){
 			$resp['status'] = 'success';
 			if(empty($id))
-				$this->settings->set_flashdata('success',"New Supplier successfully saved.");
+				$this->settings->set_flashdata('success',"New Authority Level Personnel successfully saved.");
 			else
-				$this->settings->set_flashdata('success',"Supplier successfully updated.");
+				$this->settings->set_flashdata('success',"Authority Level Personnel successfully updated.");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['err'] = $this->conn->error."[{$sql}]";
@@ -63,7 +63,7 @@ Class Master extends DBConnection {
 		$del = $this->conn->query("DELETE FROM `supplier_list` where id = '{$id}'");
 		if($del){
 			$resp['status'] = 'success';
-			$this->settings->set_flashdata('success',"Supplier successfully deleted.");
+			$this->settings->set_flashdata('success',"Authority Level Personnel successfully deleted.");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['error'] = $this->conn->error;
@@ -89,7 +89,7 @@ Class Master extends DBConnection {
 			return $this->capture_err();
 		if($check > 0){
 			$resp['status'] = 'failed';
-			$resp['msg'] = "Item Name already exist.";
+			$resp['msg'] = "material Name already exist.";
 			return json_encode($resp);
 			exit;
 		}
@@ -102,9 +102,9 @@ Class Master extends DBConnection {
 		if($save){
 			$resp['status'] = 'success';
 			if(empty($id))
-				$this->settings->set_flashdata('success',"New item successfully saved.");
+				$this->settings->set_flashdata('success',"New material successfully saved.");
 			else
-				$this->settings->set_flashdata('success',"item successfully updated.");
+				$this->settings->set_flashdata('success',"Material successfully updated.");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['err'] = $this->conn->error."[{$sql}]";
@@ -116,7 +116,7 @@ Class Master extends DBConnection {
 		$del = $this->conn->query("DELETE FROM `item_list` where id = '{$id}'");
 		if($del){
 			$resp['status'] = 'success';
-			$this->settings->set_flashdata('success',"item successfully deleted.");
+			$this->settings->set_flashdata('success',"Material successfully deleted.");
 		}else{
 			$resp['status'] = 'failed';
 			$resp['error'] = $this->conn->error;
@@ -133,6 +133,72 @@ Class Master extends DBConnection {
 		}
 		return json_encode($data);
 	}
+	//creating for the new product table i added
+
+	function save_product(){
+		extract($_POST);
+		$data = "";
+		foreach($_POST as $k =>$v){
+			if(!in_array($k,array('id','description'))){
+				if(!empty($data)) $data .=",";
+				$data .= " `{$k}`='{$v}' ";
+			}
+		}
+		if(isset($_POST['description'])){
+			if(!empty($data)) $data .=",";
+				$data .= " `description`='".addslashes(htmlentities($description))."' ";
+		}
+		$check = $this->conn->query("SELECT * FROM `product_list` where `name` = '{$name}' ".(!empty($id) ? " and id != {$id} " : "")." ")->num_rows;
+		if($this->capture_err())
+			return $this->capture_err();
+		if($check > 0){
+			$resp['status'] = 'failed';
+			$resp['msg'] = "Product Name already exist.";
+			return json_encode($resp);
+			exit;
+		}
+		if(empty($id)){
+			$sql = "INSERT INTO `product_list` set {$data} ";
+		}else{
+			$sql = "UPDATE `product_list` set {$data} where id = '{$id}' ";
+		}
+		$save = $this->conn->query($sql);
+		if($save){
+			$resp['status'] = 'success';
+			if(empty($id))
+				$this->settings->set_flashdata('success',"New product successfully saved.");
+			else
+				$this->settings->set_flashdata('success',"product successfully updated.");
+		}else{
+			$resp['status'] = 'failed';
+			$resp['err'] = $this->conn->error."[{$sql}]";
+		}
+		return json_encode($resp);
+	}
+	function delete_product(){
+		extract($_POST);
+		$del = $this->conn->query("DELETE FROM `product_list` where id = '{$id}'");
+		if($del){
+			$resp['status'] = 'success';
+			$this->settings->set_flashdata('success',"Product successfully deleted.");
+		}else{
+			$resp['status'] = 'failed';
+			$resp['error'] = $this->conn->error;
+		}
+		return json_encode($resp);
+
+	}
+	function search_product(){
+		extract($_POST);
+		$qry = $this->conn->query("SELECT * FROM product_list where `name` LIKE '%{$q}%'");
+		$data = array();
+		while($row = $qry->fetch_assoc()){
+			$data[] = array("label"=>$row['name'],"id"=>$row['id'],"description"=>$row['description']);
+		}
+		return json_encode($data);
+	}
+
+	//ending for the new product table i added. a duplicate of items
 	function save_po(){
 		extract($_POST);
 		$data = "";
@@ -367,6 +433,17 @@ switch ($action) {
 	case 'search_items':
 		echo $Master->search_items();
 	break;
+	//adding for products
+	case 'save_product':
+		echo $Master->save_product();
+	break;
+	case 'delete_product':
+		echo $Master->delete_product();
+	break;
+	case 'search_product':
+		echo $Master->search_product();
+	break;
+	//stop
 	case 'save_po':
 		echo $Master->save_po();
 	break;

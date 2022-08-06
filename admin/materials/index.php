@@ -26,7 +26,7 @@
 					<tr class="bg-navy disabled">
 						<th>#</th>
 						<th>Date Created</th>
-						<th>Item Name</th>
+						<th>Material Name</th>
 						<th>Description</th>
 						<th>Status</th>
 						<th>Action</th>
@@ -78,13 +78,13 @@
 			_conf("Are you sure to delete this Item permanently?","delete_item",[$(this).attr('data-id')])
 		})
 		$('#create_new').click(function(){
-			uni_modal("<i class='fa fa-plus'></i> Create New Item","items/manage_item.php")
+			uni_modal("<i class='fa fa-plus'></i> Create New Item","materials/manage_item.php")
 		})
 		$('.view_data').click(function(){
-			uni_modal("<i class='fa fa-info-circle'></i> Item's Details","items/view_details.php?id="+$(this).attr('data-id'),"")
+			uni_modal("<i class='fa fa-info-circle'></i> Material's Details","materials/view_details.php?id="+$(this).attr('data-id'),"")
 		})
 		$('.edit_data').click(function(){
-			uni_modal("<i class='fa fa-edit'></i> Edit Item's Details","items/manage_item.php?id="+$(this).attr('data-id'))
+			uni_modal("<i class='fa fa-edit'></i> Edit Material's Details","materials/manage_item.php?id="+$(this).attr('data-id'))
 		})
 		$('.table th,.table td').addClass('px-1 py-0 align-middle')
 		$('.table').dataTable();

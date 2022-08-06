@@ -24,11 +24,11 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
      <input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>">
     <div class="container-fluid">
         <div class="form-group">
-            <label for="name" class="control-label">Supplier Name</label>
+            <label for="name" class="control-label">Authority Level</label>
             <input type="text" name="name" id="name" class="form-control rounded-0" value="<?php echo isset($name) ? $name :"" ?>" required>
         </div>
         <div class="form-group">
-            <label for="address" class="control-label">Address</label>
+            <label for="address" class="control-label">Department</label>
             <textarea rows="3" name="address" id="address" class="form-control rounded-0" required><?php echo isset($address) ? $address :"" ?></textarea>
         </div>
         <div class="form-group">

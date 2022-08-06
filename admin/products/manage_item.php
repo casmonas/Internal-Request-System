@@ -1,7 +1,7 @@
 <?php
 require_once('../../config.php');
 if(isset($_GET['id']) && $_GET['id'] > 0){
-    $qry = $conn->query("SELECT * from `item_list` where id = '{$_GET['id']}' ");
+    $qry = $conn->query("SELECT * from `product_list` where id = '{$_GET['id']}' ");
     if($qry->num_rows > 0){
         foreach($qry->fetch_assoc() as $k => $v){
             $$k=stripslashes($v);
@@ -24,7 +24,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
      <input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>">
     <div class="container-fluid">
         <div class="form-group">
-            <label for="name" class="control-label">Item Name</label>
+            <label for="name" class="control-label">Product Name</label>
             <input type="text" name="name" id="name" class="form-control rounded-0" value="<?php echo isset($name) ? $name :"" ?>" required>
         </div>
         <div class="form-group">
@@ -48,7 +48,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 			 $('.err-msg').remove();
 			start_loader();
 			$.ajax({
-				url:_base_url_+"classes/Master.php?f=save_item",
+				url:_base_url_+"classes/Master.php?f=save_product",
 				data: new FormData($(this)[0]),
                 cache: false,
                 contentType: false,
